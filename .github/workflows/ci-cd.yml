@@ -1,26 +1,21 @@
+---
 name: cd-cd pipeline
-
 on:
   push:
     branches:
-      -main
-  pull_requst:
+      - main
+  pull_request:
     branches:
-      -main
-  
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
-    -name: checkout code
-     uses: actions/checkout@v3
-
-     -name: set up node environment
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'
-
-     -name:install dependencies
-      run: npm install
-
+      - name: checkout code
+        uses: actions/checkout@v4.2.2
+      - name: set up node environment
+        uses: actions/setup-node@v3
+        with: 
+        node-version: "14"
+      - name: install dependencies
+        run: npm install
