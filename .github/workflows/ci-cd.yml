@@ -37,6 +37,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN}}
       - name: push to dockerhub
         run: |
-          docker push dosman001/ci-cd: latest
+          docker push dosman001/ci-cd:latest
   
           
