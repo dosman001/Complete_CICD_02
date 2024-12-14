@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-cd-deployment
+  labels:
+    app: ci-cd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ci-cd
+  template:
+    metadata:
+      labels:
+        app: ci-cd
+    spec:
+      containers:
+      - name: ci-cd
+        image: dosman001/ci-cd:latest
+        ports:
+        - containerPort: 3000
+
