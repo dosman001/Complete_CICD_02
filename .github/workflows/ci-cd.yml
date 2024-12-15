@@ -19,8 +19,7 @@ jobs:
          node-version: "14"
       - name: install dependencies
         run: npm install
-     # - name: Set up Docker Buildx
-     #   uses: docker/setup-buildx-action@v2
+   
       - name: sonarqube scans
         uses: sonarsource/sonarqube-scan-action@v3
         env:
@@ -38,5 +37,14 @@ jobs:
       - name: push to dockerhub
         run: |
           docker push dosman001/ci-cd:latest
+
+  Deploy:
+    runs-on: Linux
+    needs: build
+    steps: 
+      - name: Deploy to minikube
+        run: |
+          kubectl apply -f deployments.yaml
+          kubectl apply -f services.yaml
   
           
